@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIMERA - Star Citizen</title>
+    <title>Astral Vanguard - Star Citizen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #0a1128;
@@ -11,66 +12,169 @@
             --accent-color: #e63946;
             --text-color: #f1faee;
             --light-color: #a8dadc;
+            --dark-space: #050a18;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: var(--primary-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-space);
             color: var(--text-color);
-            /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231c3a6b33" width="10" height="10" /><rect fill="%231c3a6b33" x="20" y="20" width="10" height="10" /></svg>'); */
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 5px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 10px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
         
         header {
-            background-color: var(--secondary-color);
-            padding: 1rem;
+            background: linear-gradient(to bottom, rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.7));
+            padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--light-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(168, 218, 220, 0.5);
         }
         
         nav {
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         nav ul {
             list-style: none;
-            padding: 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 1.5rem;
         }
         
         nav li {
-            margin: 0 1rem;
+            margin: 0;
         }
         
         nav a {
             color: var(--light-color);
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: block;
         }
         
         nav a:hover {
             color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         
         .hero {
             text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8));
+            padding: 4rem 1rem;
+            background: linear-gradient(rgba(5, 10, 24, 0.8), rgba(5, 10, 24, 0.8));
+            position: relative;
         }
         
         .clan-name {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--accent-color);
+            background: linear-gradient(to right, var(--light-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(168, 218, 220, 0.5);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--accent-color), #c1121f);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.6);
+        }
+        
+        .btn i {
+            margin-right: 8px;
         }
         
         .section {
-            padding: 2rem 1rem;
+            padding: 4rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -78,130 +182,499 @@
         .section-title {
             color: var(--light-color);
             border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            display: inline-block;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .about-text {
+            background-color: rgba(28, 58, 107, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
+        }
+        
+        .focus-card {
+            background: linear-gradient(to bottom right, rgba(28, 58, 107, 0.4), rgba(10, 17, 40, 0.6));
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(168, 218, 220, 0.2);
+        }
+        
+        .focus-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        
+        .focus-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
         }
         
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
         .member-card {
+            background: linear-gradient(to bottom, var(--secondary-color), var(--primary-color));
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(168, 218, 220, 0.1);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+            border-color: var(--accent-color);
+        }
+        
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 1rem;
             background-color: var(--secondary-color);
-            padding: 1rem;
-            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--light-color);
+        }
+        
+        .member-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-color);
+        }
+        
+        .member-role {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-ship {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #a8dadc;
+        }
+        
+        .activities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .activity-card {
+            background: linear-gradient(to bottom right, rgba(28, 58, 107, 0.3), rgba(10, 17, 40, 0.5));
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .activity-card h3 {
+            color: var(--light-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .activity-card h3 i {
+            color: var(--accent-color);
+        }
+        
+        .join-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .requirement {
+            background-color: rgba(28, 58, 107, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+        .requirement i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
         }
         
-        .btn:hover {
-            background-color: #c1121f;
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            color: var(--light-color);
+        }
+        
+        .contact-method i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
         }
         
         footer {
-            background-color: var(--secondary-color);
+            background: linear-gradient(to bottom, var(--primary-color), #050a18);
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             margin-top: 3rem;
+            border-top: 1px solid rgba(168, 218, 220, 0.2);
         }
         
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right, var(--secondary-color), var(--primary-color));
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: rgba(241, 250, 238, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Efectos de desplazamiento suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 align-items: center;
+                gap: 0.5rem;
             }
             
-            nav li {
-                margin: 0.5rem 0;
+            .clan-name {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Fondo de estrellas -->
+    <div class="stars" id="stars"></div>
+    
     <header>
-        <h1>QUIMERA</h1>
+        <div class="logo">
+            <i class="fas fa-space-shuttle logo-icon"></i>
+            <div class="logo-text">ASTRAL VANGUARD</div>
+        </div>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#miembros">Miembros</a></li>
-                <li><a href="#actividades">Actividades</a></li>
-                <li><a href="#unirse">Cómo unirse</a></li>
+                <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="#nosotros"><i class="fas fa-users"></i> Nosotros</a></li>
+                <li><a href="#miembros"><i class="fas fa-star"></i> Miembros</a></li>
+                <li><a href="#actividades"><i class="fas fa-calendar-alt"></i> Actividades</a></li>
+                <li><a href="#unirse"><i class="fas fa-handshake"></i> Unirse</a></li>
             </ul>
         </nav>
     </header>
     
     <section id="inicio" class="hero">
-        <div class="clan-name">QUIMERA</div>
-        <p>Una comunidad de Star Citizen dedicada a la exploración, el comercio y el combate en el universo.</p>
-        <a href="#unirse" class="btn">Únete a nosotros</a>
+        <h1 class="clan-name">ASTRAL VANGUARD</h1>
+        <p class="tagline">Una comunidad de Star Citizen dedicada a la exploración, el comercio y el combate en la vastedad del universo.</p>
+        <a href="#unirse" class="btn"><i class="fas fa-rocket"></i> Únete a nosotros</a>
     </section>
     
     <section id="nosotros" class="section">
         <h2 class="section-title">Sobre nuestro clan</h2>
-        <p>Somos un grupo de entusiastas de Star Citizen que se dedica a [describe las actividades principales de tu clan]. Fundado en [año], nuestro clan ha crecido hasta contar con [número] miembros activos.</p>
-        <p>Nuestra filosofía se basa en [describe los valores o principios de tu clan].</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Somos un grupo de entusiastas de Star Citizen que se dedica a la exploración de nuevos sistemas, comercio interestelar y operaciones tácticas. Fundado en 2950, nuestro clan ha crecido hasta contar con más de 50 miembros activos.</p>
+                <p>Nuestra filosofía se basa en el compañerismo, la estrategia y la búsqueda constante de aventuras en el universo. Valoramos la colaboración sobre la competencia y siempre nos apoyamos mutuamente en cada misión.</p>
+            </div>
+            <div class="about-text">
+                <p>Whether you're a seasoned veteran or just starting your journey in the 'verse, Astral Vanguard offers a welcoming community where you can learn, grow, and thrive among fellow space enthusiasts.</p>
+                <p>Nuestro objetivo es establecer una presencia significativa en todos los sistemas conocidos y convertirnos en una de las organizaciones más respetadas de Star Citizen.</p>
+            </div>
+        </div>
+        
+        <div class="focus-grid">
+            <div class="focus-card">
+                <i class="fas fa-fighter-jet"></i>
+                <h3>Combate Espacial</h3>
+                <p>Operaciones tácticas y defensa de intereses</p>
+            </div>
+            <div class="focus-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>Exploración</h3>
+                <p>Descubrimiento de nuevos sistemas y planetas</p>
+            </div>
+            <div class="focus-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Comercio</h3>
+                <p>Rutas comerciales y gestión de recursos</p>
+            </div>
+            <div class="focus-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Industria</h3>
+                <p>Minería y producción de materiales</p>
+            </div>
+        </div>
     </section>
     
     <section id="miembros" class="section">
         <h2 class="section-title">Miembros destacados</h2>
         <div class="members-grid">
             <div class="member-card">
-                <h3>Nombre del Líder</h3>
-                <p>Fundador/Líder</p>
-                <p>Especialidad: Combate/Exploración</p>
+                <div class="member-image">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="member-name">Marcus Valerius</h3>
+                <p class="member-role">Líder y Fundador</p>
+                <p class="member-ship">Nave: RSI Constellation</p>
+                <p>Especialista en estrategia y combate espacial</p>
             </div>
             <div class="member-card">
-                <h3>Nombre del Miembro</h3>
-                <p>Rango</p>
-                <p>Especialidad: Comercio/Logística</p>
+                <div class="member-image">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="member-name">Elena Dragomir</h3>
+                <p class="member-role">Oficial de Exploración</p>
+                <p class="member-ship">Nave: Anvil Carrack</p>
+                <p>Cartógrafa y experta en navegación</p>
             </div>
             <div class="member-card">
-                <h3>Nombre del Miembro</h3>
-                <p>Rango</p>
-                <p>Especialidad: Exploración</p>
+                <div class="member-image">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3 class="member-name">Thomas Wright</h3>
+                <p class="member-role">Director de Comercio</p>
+                <p class="member-ship">Nave: MISC Starfarer</p>
+                <p>Economista y negociador excepcional</p>
             </div>
         </div>
     </section>
     
     <section id="actividades" class="section">
         <h2 class="section-title">Nuestras actividades</h2>
-        <p>Organizamos regularmente:</p>
-        <ul>
-            <li>Eventos de exploración los fines de semana</li>
-            <li>Sesiones de comercio entre sistemas</li>
-            <li>Operaciones de combate PvP y PvE</li>
-            <li>Torneos internos con premios</li>
-        </ul>
+        <div class="activities-container">
+            <div class="activity-card">
+                <h3><i class="fas fa-map-marked-alt"></i> Exploración de sistemas</h3>
+                <p>Organizamos expediciones regulares para explorar nuevos sistemas estelares, cartografiar rutas seguras y descubrir recursos valiosos. Nuestros equipos de exploración parten cada fin de semana.</p>
+            </div>
+            <div class="activity-card">
+                <h3><i class="fas fa-shopping-cart"></i> Rutas comerciales</h3>
+                <p>Establecemos y protegemos rutas comerciales entre sistemas. Realizamos convoyes regulares para maximizar ganancias y minimizar riesgos de ataques piratas.</p>
+            </div>
+            <div class="activity-card">
+                <h3><i class="fas fa-fist-raised"></i> Operaciones de combate</h3>
+                <p>Ejercicios tácticos semanales y misiones de combate coordinadas. Desarrollamos estrategias para enfrentamientos PvP y operaciones PvE de alta dificultad.</p>
+            </div>
+            <div class="activity-card">
+                <h3><i class="fas fa-gem"></i> Minería cooperativa</h3>
+                <p>Operaciones de minería en cinturones de asteroides y planetas. Trabajamos en equipo para extraer recursos eficientemente y con seguridad.</p>
+            </div>
+        </div>
     </section>
     
     <section id="unirse" class="section">
-        <h2 class="section-title">¿Cómo unirse?</h2>
-        <p>Si estás interesado en unirte a nuestro clan, contáctanos a través de:</p>
-        <ul>
-            <li>Discord: [enlace a tu servidor de Discord]</li>
-            <li>Spectrum: [enlace a tu grupo en Spectrum]</li>
-            <li>Correo electrónico: [tu correo]</li>
-        </ul>
-        <p>Requisitos: [describe los requisitos para unirse, si los hay]</p>
+        <h2 class="section-title">¿Cómo unirse a nosotros?</h2>
+        <div class="join-content">
+            <p>Si estás interesado en unirte a nuestro clan, estamos buscando pilotos comprometidos y entusiastas que compartan nuestra visión de exploración y cooperación.</p>
+            
+            <div class="requirements">
+                <div class="requirement">
+                    <i class="fas fa-clock"></i>
+                    <h3>Compromiso</h3>
+                    <p>Al menos 5 horas semanales de juego</p>
+                </div>
+                <div class="requirement">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Comunicación</h3>
+                    <p>Micrófono y participación en Discord</p>
+                </div>
+                <div class="requirement">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Actitud</h3>
+                    <p>Espíritu colaborativo y respeto</p>
+                </div>
+            </div>
+            
+            <p>Contáctanos a través de cualquiera de estos medios:</p>
+            
+            <div class="contact-methods">
+                <a href="#" class="contact-method">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="#" class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>Correo electrónico</span>
+                </a>
+                <a href="#" class="contact-method">
+                    <i class="fab fa-spectrum"></i>
+                    <span>Spectrum</span>
+                </a>
+            </div>
+        </div>
     </section>
     
     <footer>
-        <p>Clan [Nombre] - Star Citizen</p>
-        <p>No afiliados con Cloud Imperium Games</p>
+        <div class="footer-content">
+            <div class="footer-logo">ASTRAL VANGUARD</div>
+            <p>Explorando las fronteras del universo desde 2950</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-spectrum"></i></a>
+            </div>
+            
+            <p class="copyright">© 2953 Astral Vanguard. No afiliados con Cloud Imperium Games. Star Citizen es una marca registrada de Cloud Imperium Games.</p>
+        </div>
     </footer>
+
+    <script>
+        // Crear efecto de estrellas
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 150;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const animationDuration = 2 + Math.random() * 5;
+                star.style.animationDuration = `${animationDuration}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Animación suave para los enlaces
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
