@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre de tu Clan - Star Citizen</title>
+    <style>
+        :root {
+            --primary-color: #0a1128;
+            --secondary-color: #1c3a6b;
+            --accent-color: #e63946;
+            --text-color: #f1faee;
+            --light-color: #a8dadc;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231c3a6b33" width="10" height="10" /><rect fill="%231c3a6b33" x="20" y="20" width="10" height="10" /></svg>');
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(rgba(10, 17, 40, 0.8), rgba(10, 17, 40, 0.8));
+        }
+        
+        .clan-name {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .section {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: var(--light-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .member-card {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nombre del Clan</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#miembros">Miembros</a></li>
+                <li><a href="#actividades">Actividades</a></li>
+                <li><a href="#unirse">Cómo unirse</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="inicio" class="hero">
+        <div class="clan-name">NOMBRE DEL CLAN</div>
+        <p>Una comunidad de Star Citizen dedicada a la exploración, el comercio y el combate en el universo.</p>
+        <a href="#unirse" class="btn">Únete a nosotros</a>
+    </section>
+    
+    <section id="nosotros" class="section">
+        <h2 class="section-title">Sobre nuestro clan</h2>
+        <p>Somos un grupo de entusiastas de Star Citizen que se dedica a [describe las actividades principales de tu clan]. Fundado en [año], nuestro clan ha crecido hasta contar con [número] miembros activos.</p>
+        <p>Nuestra filosofía se basa en [describe los valores o principios de tu clan].</p>
+    </section>
+    
+    <section id="miembros" class="section">
+        <h2 class="section-title">Miembros destacados</h2>
+        <div class="members-grid">
+            <div class="member-card">
+                <h3>Nombre del Líder</h3>
+                <p>Fundador/Líder</p>
+                <p>Especialidad: Combate/Exploración</p>
+            </div>
+            <div class="member-card">
+                <h3>Nombre del Miembro</h3>
+                <p>Rango</p>
+                <p>Especialidad: Comercio/Logística</p>
+            </div>
+            <div class="member-card">
+                <h3>Nombre del Miembro</h3>
+                <p>Rango</p>
+                <p>Especialidad: Exploración</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="actividades" class="section">
+        <h2 class="section-title">Nuestras actividades</h2>
+        <p>Organizamos regularmente:</p>
+        <ul>
+            <li>Eventos de exploración los fines de semana</li>
+            <li>Sesiones de comercio entre sistemas</li>
+            <li>Operaciones de combate PvP y PvE</li>
+            <li>Torneos internos con premios</li>
+        </ul>
+    </section>
+    
+    <section id="unirse" class="section">
+        <h2 class="section-title">¿Cómo unirse?</h2>
+        <p>Si estás interesado en unirte a nuestro clan, contáctanos a través de:</p>
+        <ul>
+            <li>Discord: [enlace a tu servidor de Discord]</li>
+            <li>Spectrum: [enlace a tu grupo en Spectrum]</li>
+            <li>Correo electrónico: [tu correo]</li>
+        </ul>
+        <p>Requisitos: [describe los requisitos para unirse, si los hay]</p>
+    </section>
+    
+    <footer>
+        <p>Clan [Nombre] - Star Citizen</p>
+        <p>No afiliados con Cloud Imperium Games</p>
+    </footer>
+</body>
+</html>
